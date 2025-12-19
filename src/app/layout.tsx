@@ -1,25 +1,26 @@
-import type { Metadata } from 'next'
+import React, { type PropsWithChildren } from 'react'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Lux Meet - Schedule a Meeting',
-  description: 'Schedule meetings with the Lux Partners team',
-  icons: {
-    icon: '/logo.png',
-  },
+  title: "LUX Meet",
+  description: "Private, secure video meetings with blockchain-verified participants.",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-black text-white min-h-screen antialiased`}>
+      <body className={`${inter.className} bg-black text-white min-h-screen`}>
         {children}
       </body>
     </html>
